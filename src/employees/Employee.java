@@ -14,6 +14,10 @@ public abstract class Employee {
     protected String address;
     protected String paymentMethod;
 
+    public Employee(String name){
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;  // Retirar \n
     }
