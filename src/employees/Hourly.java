@@ -1,29 +1,54 @@
-package employess;
+package employees;
+
+import java.util.LinkedList;
 
 public class Hourly extends Employee {
 
-    private double workingHours;
+    private double hourlyRate;
+    private double workedHours;
+    private int workedDays;
+    private final short maxHours = 8;
 
-    public Hourly(String name, double workingHours) {
-        super(name);
-        this.workingHours = workingHours;
+    public Hourly(int uniqueID, String name, String address, int paymentMethod, String paymentSchedule) {
+        this.id = uniqueID;
+        this.name = name;
+        this.address = address;
+        this.paymentMethod = paymentMethod;
+        this.paymentSchedule = paymentSchedule;
+        this.employeeType = "Horista";
     }
 
-    public double getWorkingHours() {
-        return workingHours;
+    public void setHourlyRate(double hourlyRate) {
+        this.hourlyRate = hourlyRate;
+    }
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setWorkedHours(double workedHours) {
+        this.workedHours += workedHours;
+    }
+
+    public double getWorkedHours() {
+        return workedHours;
+    }
+
+    public void setWorkedDay() {
+        this.workedDays += 1;
+    }
+
+    public int getWorkedDays() {
+        return workedDays;
+    }
+
+    public short getMaxHours() {
+        return maxHours;
     }
 
     @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return this.getWorkingHours() + ":" +
-                super.getName();
-    }
-
-    @Override
-    public String definePayment(String paymentType) {
-        // TODO Auto-generated method stub
-        return null;
+    public void setPaymentSchedule(String paymentSchedule) {
+        super.setPaymentSchedule(paymentSchedule);
     }
 
 }

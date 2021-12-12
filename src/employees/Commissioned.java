@@ -1,17 +1,36 @@
-package employess;
+package employees;
 
 public class Commissioned extends Employee {
 
-    private double commission;
+    private double commPerSale;
+    private double totalComm;
 
-    public Commissioned(String name, double commission) {
-        super(name);
-        this.commission = commission;
+    public Commissioned(int uniqueID, String name, String address, int paymentMethod, String paymentSchedule) {
+        this.id = uniqueID;
+        this.name = name;
+        this.address = address;
+        this.paymentMethod = paymentMethod;
+        this.paymentSchedule = paymentSchedule;
+        this.employeeType = "Comissionado";
     }
+
+    public void setCommPerSale(double commPerSale) {
+        this.commPerSale = commPerSale;
+    }
+
+    public double getCommPerSale() {
+        return commPerSale;
+    }
+
+    public void setTotalComm(double totalComm) {
+        this.totalComm += totalComm;
+    }
+
 
     @Override
-    public String definePayment(String paymentType) {
-        // TODO Auto-generated method stub
-        return null;
+    public void setPaymentSchedule(String paymentSchedule) {
+        super.setPaymentSchedule(paymentSchedule);
     }
+
+
 }
