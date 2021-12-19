@@ -6,9 +6,8 @@ public abstract class Employee {
     Scanner scan = new Scanner(System.in);
     protected String name;
     protected String employeeType;
-    protected int age;
     protected int id;
-    protected boolean syndicate;
+    protected boolean union = false;
     protected String address;
     protected int paymentMethod;
     protected String paymentSchedule;
@@ -37,20 +36,12 @@ public abstract class Employee {
         return this.address;
     }
 
-    public void setSyndicate(boolean syn) {
-        this.syndicate = syn;
+    public void setUnion(boolean union) {
+        this.union = union;
     }
 
-    public boolean getSyndicate() {
-        return this.syndicate;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return this.age;
+    public boolean getUnion() {
+        return this.union;
     }
 
     public void setPaymentMethod(int paymentMethod) {
@@ -79,9 +70,8 @@ public abstract class Employee {
 
     public void printEmployee() {
         System.out.println("CPF: " + this.getId() + " Name: " + this.getName() +
-                "\nAge: " + this.getAge() +
                 "\nAddress: " + this.getAddress() +
-                "\nSyndicate: " + this.getSyndicate() +
+                "\nSyndicate: " + this.getUnion() +
                 "\nType: " + this.getEmployeeType() +
                 "\nPayment method: " + this.getPaymentMethod() +
                 "\n Payment schedule: " + this.getPaymentSchedule());

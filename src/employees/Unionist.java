@@ -1,13 +1,23 @@
 package employees;
 
 public class Unionist extends Employee {
+    private double totalServicesFee;
     private double unionFee;
     private int unionId;
 
-    public Unionist(String name, int id)
-    {
+
+    public Unionist(String name, int id) {
         setName(name);
         setId(id);
+        totalServicesFee = 0;
+    }
+
+    public void setUnionId(int UnionId) {
+        this.unionId = UnionId;
+    }
+
+    public int getUnionId() {
+        return unionId;
     }
 
     public void setUnionFee(double unionFee) {
@@ -18,12 +28,11 @@ public class Unionist extends Employee {
         return unionFee;
     }
 
-    public void setUnionId(int UnionId){
-        this.unionId = UnionId;
+    public void addServiceFee(double serviceFee) {
+        totalServicesFee += serviceFee;
     }
 
-    public int getUnionId() {
-        return unionId;
+    public double getTotalServicesFee() {
+        return this.totalServicesFee;
     }
-
 }

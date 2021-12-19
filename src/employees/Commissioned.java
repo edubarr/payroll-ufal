@@ -2,6 +2,7 @@ package employees;
 
 public class Commissioned extends Employee {
 
+    private double salary;
     private double commPerSale;
     private double totalComm;
 
@@ -12,6 +13,14 @@ public class Commissioned extends Employee {
         this.paymentMethod = paymentMethod;
         this.paymentSchedule = paymentSchedule;
         this.employeeType = "Comissionado";
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public double getSalary() {
+        return salary;
     }
 
     public void setCommPerSale(double commPerSale) {

@@ -1,11 +1,10 @@
 package employees;
 
-import java.util.LinkedList;
-
 public class Hourly extends Employee {
 
     private double hourlyRate;
     private double workedHours;
+    private double grossRevenue;
     private int workedDays;
     private final short maxHours = 8;
 
@@ -44,6 +43,18 @@ public class Hourly extends Employee {
 
     public short getMaxHours() {
         return maxHours;
+    }
+
+    public double getGrossRevenue() {
+        return grossRevenue;
+    }
+
+    public void setGrossRevenue(double grossWage) {
+        this.grossRevenue += grossWage;
+    }
+
+    public void eraseGrossRevenue() {
+        this.grossRevenue = 0.0;
     }
 
     @Override
