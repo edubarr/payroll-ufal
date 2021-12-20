@@ -34,8 +34,8 @@ public class InitMenu {
                     5 - Lançar taxa de serviço
                     6 - Alterar dados de empregado
                     7 - Rodar folha de pagamento (Hoje)
-                    8 - Alterar agenda de pagamento
-                    9 - Criar agenda de pagamento
+                    8 - Alterar agenda de pagamento de empregado
+                    9 - Criar / Alterar agendas de pagamento
                     10 - Desfazer/Refazer alteração
                     11 - Listar empregados
                     12 - Listar filiados sindicais
@@ -44,13 +44,12 @@ public class InitMenu {
 
             int selection = input.nextInt();
 
-
             switch (selection) {
                 case 0 -> System.out.println("Selecionada opção 0 - Debug - em implementação\n");
-                case 1 -> { // OK
+                case 1 -> {
                     System.out.println("1 - Cadastro de empregado - Em testes\n"); //TODO: Tratar inputs!
                     uniqueID++;
-                    Employee newEmployee = ManageEmployees.create(uniqueID, schedules);
+                    Employee newEmployee = ManageEmployees.create(uniqueID);
                     if (newEmployee != null) {
                         employees.add(newEmployee);
                         if (newEmployee.getUnion()) {
@@ -63,70 +62,84 @@ public class InitMenu {
                     } else {
                         System.out.println("Erro ao criar novo empregado!");
                     }
-                }
-                case 2 -> { // OK
+                } // OK
+                case 2 -> {
                     System.out.println("2 - Remoção de empregado - Em testes");
                     if (employees.isEmpty()) {
                         System.out.println("Nenhum empregado cadastrado!");
                     } else {
                         ManageEmployees.remove(employees, unionists);
                     }
-                }
-                case 3 -> { // OK
+                } // OK
+                case 3 -> {
                     System.out.println("3 - Lançar cartão de ponto - Em testes");
                     if (employees.isEmpty()) {
                         System.out.println("Nenhum empregado cadastrado!");
                     } else {
                         TimeCard.add(employees);
                     }
-                }
-                case 4 -> { // OK
+                } // OK
+                case 4 -> {
                     System.out.println("4 - Lançar resultado de venda - Em testes");
                     if (employees.isEmpty()) {
                         System.out.println("Nenhum empregado cadastrado!");
                     } else {
                         SalesCommission.add(employees);
                     }
-                }
-                case 5 -> { // OK
+                } // OK
+                case 5 -> {
                     System.out.println("5 - Lançar taxa de serviço - Em testes");
                     if (employees.isEmpty()) {
                         System.out.println("Nenhum empregado cadastrado!");
                     } else {
                         Union.addServiceFee(unionists);
                     }
-                }
-                case 6 -> { // OK
+                } // OK
+                case 6 -> {
                     System.out.println("6 - Alterar dados de empregado - Em testes");
                     if (employees.isEmpty()) {
                         System.out.println("Nenhum empregado cadastrado!");
                     } else {
-                        ManageEmployees.update(employees, unionists);
+                        ManageEmployees.update(schedules, employees, unionists);
                     }
-                }
-                case 7 -> System.out.println("Selecionada opção 7 - Rodar folha de pagamento - em implementação\n");
-                case 8 -> { // OK
-                    System.out.println("8 - Alterar agenda de pagamento - Em testes");
+                } // OK
+                case 7 -> {
+                    System.out.println("7 - Rodar folha de pagamento - em implementação\n");
+                    if (employees.isEmpty()) {
+                        System.out.println("Nenhum empregado cadastrado!");
+                    } else {
+                        Payroll.run(employees, unionists, schedules);
+                    }
+                } // OK - NECESSITA TESTES
+                case 8 -> {
+                    System.out.println("8 - Alterar agenda de pagamento do empregado - Em testes");
                     if (employees.isEmpty()) {
                         System.out.println("Nenhum empregado cadastrado!");
                     } else {
                         PaymentSchedule.choose(schedules, employees);
                     }
-                }
-                case 9 -> System.out.println("Selecionada opção 9 - Criar agenda de pagamento - em implementação\n");
+                } // OK
+                case 9 -> {
+                    System.out.println("9 - Criar / Alterar agendas de pagamento - em implementação\n");
+                    if (employees.isEmpty()) {
+                        System.out.println("Nenhum empregado cadastrado!");
+                    } else {
+                        PaymentSchedule.manage(schedules);
+                    }
+                } // OK
                 case 10 -> System.out.println("Selecionada opção 10 - Desfazer/Refazer alterações - em implementação\n");
-                case 11 -> { // OK
+                case 11 -> {
                     if (employees.isEmpty()) {
                         System.out.println("\n\n{!} Nenhum empregado cadastrado.\n");
                     } else {
                         System.out.println("\n\n" + employees.size() + " empregados cadastrados.\n");
                         for (Employee employee : employees) {
-                            ManageEmployees.print(employee);
+                            ManageEmployees.print(schedules, employee);
                         }
                     }
                     System.out.println("Selecionada opção 12 - Listar empregados - em testes\n");
-                }
-                case 12 -> { // OK
+                } // OK
+                case 12 -> {
                     if (unionists.isEmpty()) {
                         System.out.println("\n\n{!} Nenhum filiado cadastrado.\n");
                     } else {
@@ -136,16 +149,14 @@ public class InitMenu {
                         }
                     }
                     System.out.println("Selecionada opção 13 - Listar filiados sindicais - em testes\n");
-                }
-                case 13 -> { // OK
+                } // OK
+                case 13 -> {
                     System.out.println("Saindo do sistema, até logo...\n");
                     exit = true;
-                }
+                } // OK
                 default -> // OK
                         System.out.println("Opção inválida, favor selecionar uma das opções disponíveis:\n");
             }
         }
     }
-
-
 }

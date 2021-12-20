@@ -1,16 +1,13 @@
 package employees;
 
-import java.util.Scanner;
-
 public abstract class Employee {
-    Scanner scan = new Scanner(System.in);
     protected String name;
     protected String employeeType;
     protected int id;
     protected boolean union = false;
     protected String address;
     protected int paymentMethod;
-    protected String paymentSchedule;
+    protected int paymentSchedule;
 
     public void setId(int id) {
         this.id = id;
@@ -52,29 +49,16 @@ public abstract class Employee {
         return this.paymentMethod;
     }
 
-    public void setPaymentSchedule(String paymentSchedule) {
+    public void setPaymentSchedule(int paymentSchedule) {
         this.paymentSchedule = paymentSchedule;
     }
 
-    public String getPaymentSchedule() {
+    public int getPaymentSchedule() {
         return this.paymentSchedule;
-    }
-
-    public void setEmployeeType(String employeeType) {
-        this.employeeType = employeeType;
     }
 
     public String getEmployeeType() {
         return this.employeeType;
-    }
-
-    public void printEmployee() {
-        System.out.println("CPF: " + this.getId() + " Name: " + this.getName() +
-                "\nAddress: " + this.getAddress() +
-                "\nSyndicate: " + this.getUnion() +
-                "\nType: " + this.getEmployeeType() +
-                "\nPayment method: " + this.getPaymentMethod() +
-                "\n Payment schedule: " + this.getPaymentSchedule());
     }
 
     @Override

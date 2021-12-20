@@ -16,7 +16,7 @@ public class ManageEmployees {
         return null;
     }
 
-    public static Employee create(int uniqueID, ArrayList<String> availableSchedules) {
+    public static Employee create(int uniqueID) {
         Scanner input = new Scanner(System.in);
         System.out.println("Matrícula: " + uniqueID);
 
@@ -54,13 +54,13 @@ public class ManageEmployees {
 
 
         if (jobType == 1) {
-            Salaried newEmployee = new Salaried(uniqueID, name, address, paymentMethod, availableSchedules.get(jobType));
+            Salaried newEmployee = new Salaried(uniqueID, name, address, paymentMethod, jobType);
             newEmployee.setUnion(syndicate.contentEquals("S"));
             System.out.println("Informe o valor da remuneração mensal (xxxx,xx): ");
             newEmployee.setSalary(input.nextDouble());
             return newEmployee;
         } else if (jobType == 2) {
-            Commissioned newEmployee = new Commissioned(uniqueID, name, address, paymentMethod, availableSchedules.get(jobType));
+            Commissioned newEmployee = new Commissioned(uniqueID, name, address, paymentMethod, jobType);
             newEmployee.setUnion(syndicate.contentEquals("S"));
             System.out.println("Informe o valor da remuneração mensal (xxxx,xx): ");
             newEmployee.setSalary(input.nextDouble());
@@ -69,7 +69,7 @@ public class ManageEmployees {
             newEmployee.setTotalComm(0);
             return newEmployee;
         } else if (jobType == 3) {
-            Hourly newEmployee = new Hourly(uniqueID, name, address, paymentMethod, availableSchedules.get(jobType));
+            Hourly newEmployee = new Hourly(uniqueID, name, address, paymentMethod, jobType);
             newEmployee.setUnion(syndicate.contentEquals("S"));
             System.out.println("Informe o valor da hora trabalhada (xxxx,xx): ");
             newEmployee.setHourlyRate(input.nextDouble());
@@ -79,7 +79,7 @@ public class ManageEmployees {
         return null; // only if error occurred
     }
 
-    public static void print(Employee employee) {
+    public static void print(ArrayList<String> schedules, Employee employee) {
 
         System.out.println("\nMatrícula do empregado: " + employee.getId() +
                 "\nNome: " + employee.getName() +
@@ -88,11 +88,11 @@ public class ManageEmployees {
 
         int paymentType = employee.getPaymentMethod();
         if (paymentType == 1) {
-            System.out.println("Método de pagamento: Cheque via Correios [" + employee.getPaymentSchedule() + "]");
+            System.out.println("Método de pagamento: Cheque via Correios [" + schedules.get(employee.getPaymentSchedule()) + "]");
         } else if (paymentType == 2) {
-            System.out.println("\nMétodo de pagamento: Cheque em mãos [" + employee.getPaymentSchedule() + "]");
+            System.out.println("\nMétodo de pagamento: Cheque em mãos [" + schedules.get(employee.getPaymentSchedule()) + "]");
         } else if (paymentType == 3) {
-            System.out.println("\nMétodo de pagamento: Depósito em conta [" + employee.getPaymentSchedule() + "]");
+            System.out.println("\nMétodo de pagamento: Depósito em conta [" + schedules.get(employee.getPaymentSchedule()) + "]");
         }
 
         System.out.print("Sindicato: ");
@@ -133,7 +133,7 @@ public class ManageEmployees {
 
     }
 
-    public static void update(ArrayList<Employee> employees, ArrayList<Unionist> unionists) {
+    public static void update(ArrayList<String> schedules, ArrayList<Employee> employees, ArrayList<Unionist> unionists) {
         Scanner input = new Scanner(System.in);
         int registerType, id;
 
@@ -144,7 +144,7 @@ public class ManageEmployees {
 
         if (employee != null) {
             System.out.println("\nEmpregado a ser alterado o cadastro:");
-            ManageEmployees.print(employee);
+            ManageEmployees.print(schedules, employee);
 
             System.out.println("\nEscolha o tipo de cadastro a ser atualizado:\n1 - Funcional \n2 - Sindical");
             registerType = input.nextInt();
@@ -182,7 +182,7 @@ public class ManageEmployees {
                             String oldAddress = employee.getAddress();
                             int oldPaymentMethod = employee.getPaymentMethod();
                             boolean oldUnion = employee.getUnion();
-                            String oldPaymentSchedule = employee.getPaymentSchedule();
+                            int oldPaymentSchedule = employee.getPaymentSchedule();
                             int newType = input.nextInt();
 
                             switch (newType) {

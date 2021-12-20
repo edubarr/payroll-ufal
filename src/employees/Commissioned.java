@@ -3,10 +3,11 @@ package employees;
 public class Commissioned extends Employee {
 
     private double salary;
+    private int workedDays;
     private double commPerSale;
     private double totalComm;
 
-    public Commissioned(int uniqueID, String name, String address, int paymentMethod, String paymentSchedule) {
+    public Commissioned(int uniqueID, String name, String address, int paymentMethod, int paymentSchedule) {
         this.id = uniqueID;
         this.name = name;
         this.address = address;
@@ -23,6 +24,18 @@ public class Commissioned extends Employee {
         return salary;
     }
 
+    public void setWorkedDay() {
+        this.workedDays += 1;
+    }
+
+    public int getWorkedDays() {
+        return workedDays;
+    }
+
+    public void resetWorkedDays() {
+        workedDays = 0;
+    }
+
     public void setCommPerSale(double commPerSale) {
         this.commPerSale = commPerSale;
     }
@@ -35,9 +48,13 @@ public class Commissioned extends Employee {
         this.totalComm += totalComm;
     }
 
+    public double getTotalComm() {
+        return totalComm;
+    }
+
 
     @Override
-    public void setPaymentSchedule(String paymentSchedule) {
+    public void setPaymentSchedule(int paymentSchedule) {
         super.setPaymentSchedule(paymentSchedule);
     }
 

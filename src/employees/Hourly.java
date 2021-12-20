@@ -8,7 +8,7 @@ public class Hourly extends Employee {
     private int workedDays;
     private final short maxHours = 8;
 
-    public Hourly(int uniqueID, String name, String address, int paymentMethod, String paymentSchedule) {
+    public Hourly(int uniqueID, String name, String address, int paymentMethod, int paymentSchedule) {
         this.id = uniqueID;
         this.name = name;
         this.address = address;
@@ -33,12 +33,18 @@ public class Hourly extends Employee {
         return workedHours;
     }
 
+    public void resetWorkedHours() { workedHours = 0;}
+
     public void setWorkedDay() {
         this.workedDays += 1;
     }
 
     public int getWorkedDays() {
         return workedDays;
+    }
+
+    public void resetWorkedDays() {
+        workedDays = 0;
     }
 
     public short getMaxHours() {
@@ -53,12 +59,12 @@ public class Hourly extends Employee {
         this.grossRevenue += grossWage;
     }
 
-    public void eraseGrossRevenue() {
+    public void resetGrossRevenue() {
         this.grossRevenue = 0.0;
     }
 
     @Override
-    public void setPaymentSchedule(String paymentSchedule) {
+    public void setPaymentSchedule(int paymentSchedule) {
         super.setPaymentSchedule(paymentSchedule);
     }
 

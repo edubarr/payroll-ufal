@@ -3,8 +3,9 @@ package employees;
 public class Salaried extends Employee {
 
     private double salary;
+    private int workedDays;
 
-    public Salaried(int uniqueID, String name, String address, int paymentMethod, String paymentSchedule) {
+    public Salaried(int uniqueID, String name, String address, int paymentMethod, int paymentSchedule) {
         this.id = uniqueID;
         this.name = name;
         this.address = address;
@@ -21,8 +22,20 @@ public class Salaried extends Employee {
         return salary;
     }
 
+    public void setWorkedDay() {
+        this.workedDays += 1;
+    }
+
+    public int getWorkedDays() {
+        return workedDays;
+    }
+
+    public void resetWorkedDays() {
+        workedDays = 0;
+    }
+
     @Override
-    public void setPaymentSchedule(String paymentSchedule) {
+    public void setPaymentSchedule(int paymentSchedule) {
         super.setPaymentSchedule(paymentSchedule);
     }
 
