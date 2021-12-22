@@ -64,8 +64,8 @@ public class ManageEmployees {
             newEmployee.setUnion(syndicate.contentEquals("S"));
             System.out.println("Informe o valor da remuneração mensal (xxxx,xx): ");
             newEmployee.setSalary(input.nextDouble());
-            System.out.println("Informe o valor da comissão por venda (0,xx): ");
-            newEmployee.setCommPerSale(input.nextDouble());
+            System.out.println("Informe o percentual da comissão por venda (xx): ");
+            newEmployee.setCommPerSale(input.nextDouble() / 100);
             newEmployee.setTotalComm(0);
             return newEmployee;
         } else if (jobType == 3) {
@@ -75,6 +75,8 @@ public class ManageEmployees {
             newEmployee.setHourlyRate(input.nextDouble());
             return newEmployee;
         }
+
+
         input.nextLine();
         return null; // only if error occurred
     }
@@ -269,4 +271,3 @@ public class ManageEmployees {
         }
     }
 }
-

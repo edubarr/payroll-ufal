@@ -52,6 +52,10 @@ public class Commissioned extends Employee {
         return totalComm;
     }
 
+    public void resetTotalComm() {
+        totalComm = 0;
+    }
+
 
     @Override
     public void setPaymentSchedule(int paymentSchedule) {

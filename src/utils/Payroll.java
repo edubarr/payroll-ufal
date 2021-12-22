@@ -80,6 +80,7 @@ public class Payroll {
                     System.out.println("Pagamento líquido: $" + (employee.getSalary() + employee.getTotalComm()) + "\n");
                 }
                 employee.resetWorkedDays();
+                employee.resetTotalComm();
             } else {
                 System.out.println("Empregado: " + employee.getName() + " sem pagamentos a receber\n");
             }

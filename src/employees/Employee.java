@@ -14,7 +14,7 @@ public abstract class Employee {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setName(String name) {
@@ -60,10 +60,5 @@ public abstract class Employee {
     public String getEmployeeType() {
         return this.employeeType;
     }
-
-    @Override
-    public String toString() {
-        // TODO Auto-generated method stub
-        return this.getName();
-    }
+    
 }
