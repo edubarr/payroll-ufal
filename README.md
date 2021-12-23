@@ -6,7 +6,6 @@ Progresso:
 
 | Índice   |          Função                        | Progresso |
 |:--------:|:--------------------------------------:|:---------:|
-|     0    |  Debug                                 |     ✅    |
 |     1    |  Adicionar empregado                   |     ✅    |
 |     2    |  Remover empregado                     |     ✅    |
 |     3    |  Lançar cartão de ponto                |     ✅    |
@@ -14,7 +13,9 @@ Progresso:
 |     5    |  Lançar taxa de serviço                |     ✅    |
 |     6    |  Atualizar dados do empregado          |     ✅    |
 |     7    |  Rodar folha de pagamento (hoje)       |     ✅    |
-|     8    |  Desfazer / Refazer                    |     ✅    |
-|     9    |  Alterar agenda de pagamento           |     ✅    |
-|    10    |  Criar / Editar agendas de pagamentos  |     ✅    |
-|    11    |  Sair                                  |     ✅    |
+|     8    |  Alterar agenda de pagamento de empregado |     ✅    |
+|     9    |  Criar / Alterar agendas de pagamento  |     ✅    |
+|    10    |  Desfazer/Refazer alteração            |     ✅    |
+|    11    |  Listar empregados                     |     ✅    |
+|    12    |  Listar filiados sindicais             |     ✅    |
+|    13    |  Sair do sistema                       |     ✅    |
