@@ -41,16 +41,18 @@ public class State {
         return schedules;
     }
 
-    public static State update(State state, ArrayList<Employee> employees, ArrayList<Unionist> unionists, ArrayList<String> schedules){
-        state.setEmployees(employees);
-        state.setUnionists(unionists);
-        state.setSchedules(schedules);
-
-        return state;
+    public static State update(ArrayList<Employee> employees, ArrayList<Unionist> unionists, ArrayList<String> schedules){
+        return new State(employees, unionists, schedules);
     }
 
     public static State menu(Stack<State> stateNow, Stack<State> stateUndo) {
         Scanner input = new Scanner(System.in);
+
+        System.out.println("statenow:");
+        System.out.println(stateNow);
+
+        System.out.println("stateUndo");
+        System.out.println(stateUndo);
 
         System.out.println("""
                 Escolha uma opção:

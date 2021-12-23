@@ -13,14 +13,13 @@ public class InitMenu {
 
         ArrayList<Employee> employees = new ArrayList<>();
         ArrayList<Unionist> unionists = new ArrayList<>();
-
         ArrayList<String> schedules = PaymentSchedule.createDefault();
 
         Stack<State> stateNow = new Stack<>();
         Stack<State> stateUndo = new Stack<>();
 
-        State currentState = new State(employees, unionists, schedules);
-        stateNow.add(currentState);
+        State initialState = new State(employees, unionists, schedules);
+        stateNow.add(initialState);
 
         System.out.println("\n##########################################");
         System.out.println("##### Folha de pagamento v0.1 Alpha #####");
@@ -52,7 +51,17 @@ public class InitMenu {
             int selection = input.nextInt();
 
             switch (selection) {
-                case 0 -> System.out.println("Selecionada opção 0 - Debug - em implementação\n");
+                case 0 -> {
+                    System.out.println("Selecionada opção 0 - Debug - em implementação\n");
+                    System.out.println("statenow:");
+                    System.out.println(stateNow);
+
+                    System.out.println("stateUndo");
+                    System.out.println(stateUndo);
+
+                    System.out.println("statenow peek:");
+                    System.out.println(stateNow.peek().getEmployees());
+                }
                 case 1 -> {
                     System.out.println("1 - Cadastro de empregado - Em testes\n"); //TODO: Tratar inputs!
                     uniqueID++;
@@ -65,7 +74,7 @@ public class InitMenu {
                             System.out.println("Empregado filiado ao sindicato pela Matrícula: " + newUnionist.getUnionId());
                         }
 
-                        stateNow.push(State.update(currentState, employees, unionists, schedules));
+                        stateNow.push(State.update(employees, unionists, schedules));
 
                         System.out.println("Empregado criado com sucesso!");
                         System.out.print("\n");
@@ -80,7 +89,8 @@ public class InitMenu {
                     } else {
                         ManageEmployees.remove(employees, unionists);
                     }
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 3 -> {
                     System.out.println("3 - Lançar cartão de ponto - Em testes");
@@ -89,7 +99,8 @@ public class InitMenu {
                     } else {
                         TimeCard.add(employees);
                     }
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 4 -> {
                     System.out.println("4 - Lançar resultado de venda - Em testes");
@@ -98,7 +109,8 @@ public class InitMenu {
                     } else {
                         SalesCommission.add(employees);
                     }
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 5 -> {
                     System.out.println("5 - Lançar taxa de serviço - Em testes");
@@ -108,7 +120,7 @@ public class InitMenu {
                         Union.addServiceFee(unionists);
                     }
 
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 6 -> {
                     System.out.println("6 - Alterar dados de empregado - Em testes");
@@ -118,7 +130,7 @@ public class InitMenu {
                         ManageEmployees.update(schedules, employees, unionists);
                     }
 
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 7 -> {
                     System.out.println("7 - Rodar folha de pagamento - em implementação\n");
@@ -127,8 +139,7 @@ public class InitMenu {
                     } else {
                         Payroll.run(employees, unionists, schedules);
                     }
-
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK - NECESSITA TESTES
                 case 8 -> {
                     System.out.println("8 - Alterar agenda de pagamento do empregado - Em testes");
@@ -138,7 +149,7 @@ public class InitMenu {
                         PaymentSchedule.choose(schedules, employees);
                     }
 
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 9 -> {
                     System.out.println("9 - Criar / Alterar agendas de pagamento - em testes\n");
@@ -148,15 +159,15 @@ public class InitMenu {
                         PaymentSchedule.manage(schedules);
                     }
 
-                    stateNow.push(State.update(currentState, employees, unionists, schedules));
+                    stateNow.push(State.update(employees, unionists, schedules));
                 } // OK
                 case 10 -> {
                     System.out.println("10 - Desfazer/Refazer  - em implementação\n");
                     State newState = State.menu(stateNow, stateUndo);
                     if (newState != null) {
-                        employees = newState.getEmployees();
-                        unionists = newState.getUnionists();
-                        schedules = newState.getSchedules();
+                        employees = new ArrayList<Employee>(newState.getEmployees());
+                        unionists = new ArrayList<Unionist>(newState.getUnionists());
+                        schedules = new ArrayList<String>(newState.getSchedules());
                     } else {
                         System.out.println("Erro ao Desfazer / Refazer!");
                     }
