@@ -103,6 +103,8 @@ public class ManageEmployees {
         } else {
             System.out.println("Não");
         }
+
+        System.out.print("\n");
     }
 
     public static void remove(ArrayList<Employee> employees, ArrayList<Unionist> unionists) {
@@ -154,6 +156,7 @@ public class ManageEmployees {
             switch (registerType) {
                 case 1 -> {
                     System.out.println("""
+                                                        
                             Escolha o dado a ser atualizado:
                             1 - Nome
                             2 - Endereço
@@ -165,15 +168,16 @@ public class ManageEmployees {
                         case 1 -> {
                             System.out.println("Insira o novo nome para o empregado:");
                             employee.setName(input.nextLine());
-                            System.out.println("Nome do empregado atualizado com sucesso!");
+                            System.out.println("Nome do empregado atualizado com sucesso!\n");
                         }
                         case 2 -> {
                             System.out.println("Insira o novo endereço para o empregado:");
                             employee.setAddress(input.nextLine());
-                            System.out.println("Endereço do empregado atualizado com sucesso!");
+                            System.out.println("Endereço do empregado atualizado com sucesso!\n");
                         }
                         case 3 -> {
                             System.out.println("""
+                                                                        
                                     Insira o novo tipo de empregado:
                                     1 - Assalariado
                                     2 - Comissionado
@@ -195,7 +199,7 @@ public class ManageEmployees {
                                     employees.add(newSalaried);
                                     System.out.println("Informe o valor da remuneração mensal (xxxx,xx): ");
                                     newSalaried.setSalary(input.nextDouble());
-                                    System.out.println("Tipo de empregado alterado para Assalariado com sucesso!");
+                                    System.out.println("Tipo de empregado alterado para Assalariado com sucesso!\n");
                                 }
                                 case 2 -> {
                                     employees.remove(employee);
@@ -206,7 +210,7 @@ public class ManageEmployees {
                                     newCommissioned.setSalary(input.nextDouble());
                                     System.out.println("Informe o valor da comissão por venda (0,xx): ");
                                     newCommissioned.setCommPerSale(input.nextDouble());
-                                    System.out.println("Tipo de empregado alterado para Comissionado com sucesso!");
+                                    System.out.println("Tipo de empregado alterado para Comissionado com sucesso!\n");
                                 }
                                 case 3 -> {
                                     employees.remove(employee);
@@ -215,21 +219,22 @@ public class ManageEmployees {
                                     employees.add(newHourly);
                                     System.out.println("Informe o valor da hora trabalhada (xxxx,xx): ");
                                     newHourly.setHourlyRate(input.nextDouble());
-                                    System.out.println("Tipo de empregado alterado para Horista com sucesso!");
+                                    System.out.println("Tipo de empregado alterado para Horista com sucesso!\n");
                                 }
-                                default -> System.out.println("Opção inválida! Abortando operação");
+                                default -> System.out.println("Opção inválida! Abortando operação\n");
                             }
                         }
                         case 4 -> {
                             System.out.println("""
+                                                                        
                                     Escolha o novo método de pagamento:
                                     1 - Cheque por Correios
                                     2 - Cheque em mãos
                                     3 - Depósito em conta bancária""");
                             employee.setPaymentMethod(input.nextInt());
-                            System.out.println("Método de pagamento alterado com sucesso!");
+                            System.out.println("Método de pagamento alterado com sucesso!\n");
                         }
-                        default -> System.out.println("Opção inválida! Abortando operação");
+                        default -> System.out.println("Opção inválida! Abortando operação\n");
                     }
                 }
                 case 2 -> {
@@ -248,26 +253,28 @@ public class ManageEmployees {
 
                         switch (unionAction) {
                             case 1 -> { // TODO: Verificar valor das taxas sindicais após remoção do sindicato
-                                System.out.println("Empregado filiado ao sindicato. Deseja CANCELAR a filiação ao sindicato?" +
-                                        "\n S - Sim | N - Não");
+                                System.out.println("""
+
+                                        Empregado filiado ao sindicato. Deseja CANCELAR a filiação ao sindicato?
+                                         S - Sim | N - Não""");
                                 if (input.nextLine().equalsIgnoreCase("s")) {
                                     Union.remove(unionists, unionId);
-                                    System.out.println("Empregado removido do sindicato com sucesso!");
+                                    System.out.println("Empregado removido do sindicato com sucesso!\n");
                                 }
                             }
                             case 2 -> {
                                 System.out.println("Insira a nova taxa sindical: ");
                                 unionist.setUnionFee(input.nextDouble());
-                                System.out.println("Taxa sindical atualizada com sucesso!");
+                                System.out.println("Taxa sindical atualizada com sucesso!\n");
                             }
-                            default -> System.out.println("Opção inválida! Abortando operação");
+                            default -> System.out.println("Opção inválida! Abortando operação\n");
                         }
                     }
                 }
-                default -> System.out.println("Opção inválida! Abortando operação");
+                default -> System.out.println("Opção inválida! Abortando operação\n");
             }
         } else {
-            System.out.println("Empregado não encontrado!");
+            System.out.println("Empregado não encontrado! Verifique a matrícula!\n");
         }
     }
 }

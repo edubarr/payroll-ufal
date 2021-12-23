@@ -2,13 +2,12 @@ package utils;
 
 import employees.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Payroll {
 
     public static void run(ArrayList<Employee> employees, ArrayList<Unionist> unionists, ArrayList<String> schedules) {
-        System.out.println("Rodando folha de pagamento. Data de hoje: " + LocalDate.now());
+        System.out.println("Rodando folha de pagamento para hoje");
 
         for (String schedule : schedules.subList(1, schedules.size())) {
 
@@ -109,6 +108,7 @@ public class Payroll {
                     System.out.println("Pagamento líquido: $" + employee.getGrossRevenue() + "\n");
                 }
                 employee.resetWorkedDays();
+                employee.resetWorkedHours();
                 employee.resetGrossRevenue();
             } else {
                 System.out.println("Empregado " + employee.getName() + " sem pagamentos a receber\n");

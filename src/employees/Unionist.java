@@ -1,7 +1,7 @@
 package employees;
 
 public class Unionist extends Employee {
-    private double totalServicesFee = 0;
+    private double totalServicesFee;
     private double unionFee;
     private int unionId;
 

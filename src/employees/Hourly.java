@@ -6,6 +6,7 @@ public class Hourly extends Employee {
     private double workedHours;
     private double grossRevenue;
     private int workedDays;
+    @SuppressWarnings("FieldCanBeLocal")
     private final short maxHours = 8;
 
     public Hourly(int uniqueID, String name, String address, int paymentMethod, int paymentSchedule) {

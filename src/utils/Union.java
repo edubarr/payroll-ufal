@@ -31,8 +31,9 @@ public class Union {
         if (unionist != null) {
             System.out.println("Informe o valor da taxa de serviço: ");
             unionist.addServiceFee(input.nextDouble());
+            System.out.println("Taxa de serviço cadastrada com sucesso!\n");
         } else {
-            System.out.println("Não foi localizado sindicalista com a matrícula informada");
+            System.out.println("Não foi localizado sindicalista com a matrícula informada\n");
         }
     }
 
@@ -40,7 +41,7 @@ public class Union {
 
         System.out.println("\nMatrícula do empregado: " + unionist.getId() + "\nMatrícula sindical do empregado: " + unionist.getUnionId());
         System.out.println("Nome: " + unionist.getName() + "\nContribuição sindical atual: $" + unionist.getUnionFee());
-        System.out.println("Taxa Sindical: " + unionist.getUnionFee() + "\nTotal de taxas de serviço:" + unionist.getTotalServicesFee());
+        System.out.println("\nTotal de taxas de serviço:" + unionist.getTotalServicesFee());
 
     }
 

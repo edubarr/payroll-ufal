@@ -66,6 +66,7 @@ public class PaymentSchedule {
                 schedules.add(i, newSchedule);
             }
         }
+        System.out.println("Agendas padrão atualizadas com sucesso!");
     }
 
     private static void add(ArrayList<String> schedules) {
@@ -90,6 +91,10 @@ public class PaymentSchedule {
         if (schedule > 3){
             schedules.remove(schedule);
         }
+        else{
+            System.out.println("Agendas padrão não podem ser apagadas!\n");
+            return;
+        }
 
         System.out.println("Agenda" + schedule + "apagada com sucesso! Agendas disponíveis: ");
         listAll(schedules);
@@ -100,6 +105,7 @@ public class PaymentSchedule {
         for (String schedule : schedules.subList(1, schedules.size())) {
             System.out.println((index++) + " - " + schedule);
         }
+        System.out.print("\n");
     }
 
     private static boolean exists(ArrayList<String> schedules, int choice) {
@@ -123,9 +129,9 @@ public class PaymentSchedule {
 
             if (exists(schedules, choice)) {
                 employee.setPaymentSchedule(choice);
-                System.out.println("Agenda alterada com sucesso!");
+                System.out.println("Agenda alterada com sucesso!\n");
             } else {
-                System.out.println("Agenda não disponível, ou mal digitada, tente novamente ou realize o cadastro da agenda");
+                System.out.println("Agenda não disponível, ou mal digitada, tente novamente ou realize o cadastro da agenda!\n");
             }
         }
     }

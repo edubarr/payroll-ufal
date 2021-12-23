@@ -12,29 +12,17 @@ public class State {
     ArrayList<String> schedules;
 
     public State(ArrayList<Employee> employees, ArrayList<Unionist> unionists, ArrayList<String> schedules) {
-        this.employees = employees;
-        this.unionists = unionists;
-        this.schedules = schedules;
-    }
-
-    public void setEmployees(ArrayList<Employee> employees) {
-        this.employees = employees;
+        this.employees = new ArrayList<>(employees);
+        this.unionists = new ArrayList<>(unionists);
+        this.schedules = new ArrayList<>(schedules);
     }
 
     public ArrayList<Employee> getEmployees() {
         return employees;
     }
 
-    public void setUnionists(ArrayList<Unionist> unionists) {
-        this.unionists = unionists;
-    }
-
     public ArrayList<Unionist> getUnionists() {
         return unionists;
-    }
-
-    public void setSchedules(ArrayList<String> schedules) {
-        this.schedules = schedules;
     }
 
     public ArrayList<String> getSchedules() {
@@ -48,12 +36,6 @@ public class State {
     public static State menu(Stack<State> stateNow, Stack<State> stateUndo) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("statenow:");
-        System.out.println(stateNow);
-
-        System.out.println("stateUndo");
-        System.out.println(stateUndo);
-
         System.out.println("""
                 Escolha uma opção:
                 1 - Desfazer última ação
@@ -64,11 +46,11 @@ public class State {
 
         switch (option) {
             case 1 -> {
-                System.out.println("Desfazendo última ação...");
+                System.out.println("Desfazendo última ação...\n");
                 return undo(stateNow, stateUndo);
             }
             case 2 -> {
-                System.out.println("Refazendo última ação...");
+                System.out.println("Refazendo última ação...\n");
                 return redo(stateNow, stateUndo);
             }
         }
@@ -77,17 +59,18 @@ public class State {
 
     private static State undo(Stack<State> stateNow, Stack<State> stateUndo) {
         if (stateNow.size() == 1) {
-            System.out.println("Não há ação para Desfazer!");
+            System.out.println("Não há ação para Desfazer!\n");
             return null;
         }
-        stateUndo.push(stateNow.pop());
+        State undo = stateNow.pop();
+        stateUndo.push(undo);
 
         return stateNow.peek();
     }
 
     private static State redo(Stack<State> stateNow, Stack<State> stateUndo) {
-        if (stateUndo.size() == 0) {
-            System.out.println("Não há ação para Refazer!");
+        if (stateUndo.size() == 1) {
+            System.out.println("Não há ação para Refazer!\n");
             return null;
         }
         State redo = stateUndo.pop();

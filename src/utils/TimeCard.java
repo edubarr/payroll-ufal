@@ -19,7 +19,7 @@ public class TimeCard {
         employeeId = input.nextInt();
 
         if (ManageEmployees.find(employees, employeeId) == null) {
-            System.out.println("Não foi localizado empregado com a matrícula informada");
+            System.out.println("Não foi localizado empregado com a matrícula informada\n");
         }
         else if (ManageEmployees.find(employees, employeeId) instanceof Hourly employee) {
             System.out.println("Insira a data e hora do início da jornada [dd-MM-yyyy HH:mm]: ");
@@ -46,7 +46,7 @@ public class TimeCard {
             System.out.print("\n");
 
         } else {
-            System.out.println("Empregado não é Horista!");
+            System.out.println("Empregado não é Horista!\n");
         }
     }
 

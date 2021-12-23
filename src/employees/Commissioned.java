@@ -1,5 +1,10 @@
 package employees;
 
+import utils.ManageEmployees;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Commissioned extends Employee {
 
     private double salary;
@@ -14,6 +19,31 @@ public class Commissioned extends Employee {
         this.paymentMethod = paymentMethod;
         this.paymentSchedule = paymentSchedule;
         this.employeeType = "Comissionado";
+    }
+
+    public static void addCommission(ArrayList<Employee> employees) {
+        Scanner input = new Scanner(System.in);
+        int employeeId;
+
+        System.out.println("Informe a matrícula do empregado: ");
+        employeeId = input.nextInt();
+
+        if (ManageEmployees.find(employees, employeeId) == null) {
+            System.out.println("Não foi localizado empregado com a matrícula informada\n");
+        }
+        else if (ManageEmployees.find(employees, employeeId) instanceof Commissioned employee) {
+            System.out.println("Insira o valor total da venda [XXXX,XX]:");
+            double saleTotal = input.nextDouble();
+            double commission = (saleTotal * employee.getCommPerSale());
+
+            employee.setTotalComm(commission);
+
+            System.out.println("Comissão recebida por esta venda: " + commission);
+            System.out.print("\n");
+
+        } else {
+            System.out.println("Empregado não é Comissionado!\n");
+        }
     }
 
     public void setSalary(double salary) {
