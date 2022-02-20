@@ -29,15 +29,20 @@ public class Payroll {
 
     }
 
+    private static int getDays(String schedule){
+
+        return switch (schedule) {
+            case "Semanalmente" -> 7;
+            case "Quinzenalmente" -> 15;
+            case "Mensalmente" -> 30;
+            default -> 0;
+        };
+    }
+
     private static void salariedPay(Salaried employee, Unionist unionist, String schedule, ArrayList<String> schedules) {
         if (schedule.equals(schedules.get(employee.getPaymentSchedule()))) {
             employee.setWorkedDay();
-            int days = switch (schedule) {
-                case "Semanalmente" -> 7;
-                case "Quinzenalmente" -> 15;
-                case "Mensalmente" -> 30;
-                default -> 0;
-            };
+            int days = getDays(schedule);
 
             if (employee.getWorkedDays() == days) {
                 System.out.println(employee.getName() + ":");
@@ -59,12 +64,7 @@ public class Payroll {
     private static void commissionedPay(Commissioned employee, Unionist unionist, String schedule, ArrayList<String> schedules) {
         if (schedule.equals(schedules.get(employee.getPaymentSchedule()))) {
             employee.setWorkedDay();
-            int days = switch (schedule) {
-                case "Semanalmente" -> 7;
-                case "Quinzenalmente" -> 15;
-                case "Mensalmente" -> 30;
-                default -> 0;
-            };
+            int days = getDays(schedule);
 
             if (employee.getWorkedDays() == days) {
                 System.out.println(employee.getName());
@@ -89,12 +89,7 @@ public class Payroll {
 
     private static void hourlyPay(Hourly employee, Unionist unionist, String schedule, ArrayList<String> schedules) {
         if (schedule.equals(schedules.get(employee.getPaymentSchedule()))) {
-            int days = switch (schedule) {
-                case "Semanalmente" -> 7;
-                case "Quinzenalmente" -> 15;
-                case "Mensalmente" -> 30;
-                default -> 0;
-            };
+            int days = getDays(schedule);
 
             if (employee.getWorkedDays() == days) {
                 System.out.println("Empregado: " + employee.getName());
