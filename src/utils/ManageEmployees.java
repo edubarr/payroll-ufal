@@ -52,7 +52,11 @@ public class ManageEmployees {
                 "\n S - Sim | N - Não");
         String syndicate = input.next();
 
+        return createEmployee(jobType, uniqueID, name, address, paymentMethod, syndicate);
+    }
 
+    public static Employee createEmployee(int jobType, int uniqueID, String name, String address, int paymentMethod, String syndicate) {
+        Scanner input = new Scanner(System.in);
         if (jobType == 1) {
             Salaried newEmployee = new Salaried(uniqueID, name, address, paymentMethod, jobType);
             newEmployee.setUnion(syndicate.contentEquals("S"));
@@ -75,7 +79,6 @@ public class ManageEmployees {
             newEmployee.setHourlyRate(input.nextDouble());
             return newEmployee;
         }
-
 
         input.nextLine();
         return null; // only if error occurred
