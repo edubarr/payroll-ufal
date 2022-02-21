@@ -3,6 +3,7 @@ Projeto de folha de pagamento da disciplina de Projeto de Software
 
 Progresso:
 
+AB1:
 
 | Índice   |          Função                        | Progresso |
 |:--------:|:--------------------------------------:|:---------:|
@@ -19,3 +20,10 @@ Progresso:
 |    11    |  Listar empregados                     |     ✅    |
 |    12    |  Listar filiados sindicais             |     ✅    |
 |    13    |  Sair do sistema                       |     ✅    |
+
+AB2:
+## Code Smells to Patterns
+| Índice   |     Code smell      | Método de resolução | Classe afetada| Status | Commit |
+|:--------:|:-------------------:|:-------------------:|:-------------:|:------:|:------:|
+|     1    |  Código duplicado   |    Extract Method   |     Payroll   |  ✅    | [76a93a1 - refactoring using Extract Method to eliminate duplicated code](https://github.com/edubarr/payroll-ufal/commit/76a93a108ee600e113a0784f2321c2ed7205e9ef) |
+|     1    |  Código duplicado   |    Extract Method   |     Payroll   |  ✅    | [refactoring using Extract Method to eliminate duplicated code](https://github.com/edubarr/payroll-ufal/commit/76a93a108ee600e113a0784f2321c2ed7205e9ef) |
