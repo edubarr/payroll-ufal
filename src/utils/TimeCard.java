@@ -37,7 +37,7 @@ public class TimeCard {
             employee.setWorkedDay();
             employee.setWorkedHours(workedHours);
 
-            double dayIncome = dayIncome(employee, workedHours);
+            double dayIncome = employee.getDayIncome();
 
             employee.setGrossRevenue(dayIncome);
 
@@ -47,18 +47,6 @@ public class TimeCard {
 
         } else {
             System.out.println("Empregado não é Horista!\n");
-        }
-    }
-
-    private static double dayIncome(Hourly employee, double workedHours) {
-        int maxHours = employee.getMaxHours();
-        double hourlyRate = employee.getHourlyRate();
-
-        if (workedHours > maxHours) {
-            return ((maxHours * hourlyRate) + (workedHours - maxHours) * (hourlyRate * 1.5));
-        }
-        else {
-            return hourlyRate * workedHours;
         }
     }
 }

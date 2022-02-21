@@ -22,10 +22,6 @@ public class Hourly extends Employee {
         this.hourlyRate = hourlyRate;
     }
 
-    public double getHourlyRate() {
-        return hourlyRate;
-    }
-
     public void setWorkedHours(double workedHours) {
         this.workedHours += workedHours;
     }
@@ -48,10 +44,6 @@ public class Hourly extends Employee {
         workedDays = 0;
     }
 
-    public short getMaxHours() {
-        return maxHours;
-    }
-
     public double getGrossRevenue() {
         return grossRevenue;
     }
@@ -62,6 +54,15 @@ public class Hourly extends Employee {
 
     public void resetGrossRevenue() {
         this.grossRevenue = 0.0;
+    }
+
+    public double getDayIncome(){
+        if (workedHours > maxHours) {
+            return ((maxHours * hourlyRate) + (workedHours - maxHours) * (hourlyRate * 1.5));
+        }
+        else {
+            return hourlyRate * workedHours;
+        }
     }
 
     @Override
